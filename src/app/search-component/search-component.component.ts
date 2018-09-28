@@ -139,7 +139,8 @@ export class SearchComponentComponent implements OnInit {
 
   showFlights(){
     if(this.formData.fromCity === this.formData.toCity){
-      this.formError = "Departure and Arrival City can't be same";
+      this.notifyMessage = "Departure and Arrival City can't be same";
+      
     }else{
       this.toRender = true;
       this.formError = null;
@@ -172,7 +173,7 @@ export class SearchComponentComponent implements OnInit {
   }
 
   private filterHelper( priceProperty : string , resultProperty : string){
-    let result = this.resultBackUp.filter(cur => cur[priceProperty] <= this.formData.maxPrice);
+    let result = this.resultBackUp.filter(cur => cur[priceProperty]*this.formData.travellers <= this.formData.maxPrice);
     if(result.length==0){
       this.notifyMessage = this.showNotifyMessage()
     }
