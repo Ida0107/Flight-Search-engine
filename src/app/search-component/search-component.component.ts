@@ -139,7 +139,8 @@ export class SearchComponentComponent implements OnInit {
 
   showFlights(){
     if(this.formData.fromCity === this.formData.toCity){
-      this.notifyMessage = "Departure and Arrival City can't be same";
+      this.formError = "Departure and Arrival City can't be same";
+      this.notifyMessage = this.retOneWayResult = this.returnResult = this.depOneWayResult = null;
       
     }else{
       this.toRender = true;

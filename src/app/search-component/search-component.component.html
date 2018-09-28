@@ -57,7 +57,9 @@
             <div><label for="travellers">Travellers</label></div>
             <input [(ngModel)]= "formData.travellers" 
                     name="travellers" 
-                    type="text" 
+                    type="number" 
+                    min="1" 
+                    max="5"
                     class="form-control" 
                     id="travellers" 
                     placeholder="Enter Travellers" 
@@ -76,7 +78,10 @@
                         min="100" 
                         max="50000" 
                         step="1000"
-            ></mat-slider>
+            ></mat-slider>     
+          </div>
+          <div *ngIf = "this.formData.maxPrice" style="float:left; padding: 10px;">
+            <p>Maximum Price Selected : {{this.formData.maxPrice}}</p>
           </div>
         </form>
     </div>

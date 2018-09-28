@@ -23,7 +23,7 @@ nav{
     float: left;
     margin: 0 10px;
 }
-select{
+select, input{
     width: 200px;
 }
 .btn{
