@@ -35,6 +35,16 @@ select, input{
 .hide{
     display: none;
 }
+footer{
+    position: absolute;
+    color: white;
+    background-color:rgba(49, 47, 47, 0.5);
+    width: 100%;
+    bottom: 0px;
+}
+.footer{
+    margin:0 20px;
+}
 
 
 
