@@ -1,0 +1,40 @@
+nav{
+    margin: 30px;
+}
+.nav-list .nav-list-item a{
+    margin: 20px 30px;
+    padding: 5px 1px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+.nav-list .nav-list-item.selected{
+    border-bottom: solid 3px #EC5B24;
+    
+}
+.form-fields{
+    background-color: white;
+    height:120px;
+    margin: 20px;
+    border: solid lightgray 2px;
+    border-radius: 8px;  
+}
+.form-fields .form-group{
+    float: left;
+    margin: 0 10px;
+}
+select{
+    width: 200px;
+}
+.btn{
+    margin-top: 30px;
+}
+.slider{
+    margin: 0 10px;
+}
+.hide{
+    display: none;
+}
+
+
+

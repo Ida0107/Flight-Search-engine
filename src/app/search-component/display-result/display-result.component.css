@@ -1,0 +1,33 @@
+.result-container{
+    background-color : rgb(241, 235, 235);
+    width: 50%;
+    margin: auto;
+    padding: 30px;
+    border: solid lightgray 2px;
+    border-radius: 10px;
+}
+.ret_desc{
+    text-align:center;
+}
+.row{
+    border-bottom: solid lightgray  2px;
+    padding-bottom: 10px;
+}
+.depFlight, .retFlight{
+    width: 35%;
+}
+.oneWayFlightDetail{
+    float: left;
+    width: 70%;
+
+}
+.bookBtn{
+    float: right;
+    margin-top: 25px;
+}
+h6,  p{
+    margin-bottom: 1px;
+}
+.traveller{
+    font-size: 12px;
+}

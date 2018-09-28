@@ -1,0 +1,97 @@
+<div class="app-container">
+  <div class="flight-form">
+    <nav class="nav-list">
+      <span class="nav-list-item" [ngClass] ="{'selected': isSelected}"><a (click) ="oneWayActive()" href="#">ONE WAY</a></span>
+      <span class="nav-list-item" [ngClass] ="{'selected': !isSelected}"><a (click) ="roundActive()" href="#">ROUND WAY </a></span>
+    </nav>
+    <div class="form-fields">
+      <form #bookingForm = "ngForm">
+          <div class="form-group">
+            <div><label for="fromCity">From</label></div>
+            <select [(ngModel)]= "formData.fromCity"
+                   name="fromCity" 
+                   type="text" 
+                   class="form-control" 
+                   id="fromCity" 
+                   placeholder="Enter city or Airport" 
+                   required><option>Pune</option><option>Delhi</option></select>
+          </div>
+          <div class="form-group">
+            <div><label for="toCity">To</label></div>
+            <select [(ngModel)]= "formData.toCity" 
+                    name="toCity" 
+                    type="text" 
+                    class="form-control" 
+                    id="toCity" 
+                    placeholder="Enter City or Airport" 
+                    required><option>Pune</option><option>Delhi</option></select>
+          </div>
+          <div class="form-group">
+            <div><label for="departureDate">Departure</label></div>
+            <input (change) = "onChange()" [(ngModel)]= "formData.departureDate" 
+                    name="departureDate" 
+                    type="text" 
+                    class="form-control" 
+                    id="departureDate" 
+                    bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}"
+                    [minDate]="today"
+                    placeholder="Enter Departure date" 
+                    required>
+          </div>
+          <div class="form-group">
+            <div><label for="returnDate">Return</label></div>
+            <input  [(ngModel)]= "formData.returnDate" 
+                    name="returnDate" 
+                    type="text" 
+                    [disabled]="isSelected" 
+                    class="form-control" 
+                    id="returnDate" 
+                    bsDatepicker 
+                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}"
+                    [minDate]="formData.departureDate"
+                    placeholder="Enter Return date" 
+                    required>
+          </div>
+          <div class="form-group">
+            <div><label for="travellers">Travellers</label></div>
+            <input [(ngModel)]= "formData.travellers" 
+                    name="travellers" 
+                    type="text" 
+                    class="form-control" 
+                    id="travellers" 
+                    placeholder="Enter Travellers" 
+                    required>
+          </div>
+          <button [disabled]="!bookingForm.form.valid" (click) ="showFlights()"type="submit" class="btn btn-primary">Submit</button>
+          <div [ngClass]= "{'hide': !slider}" class="form-group">
+            <label for="slider">Price Range</label>
+            <mat-slider (change) = "filterByPrice()"
+                        [(ngModel)]= "formData.maxPrice" 
+                        name="maxPrice"
+                        id="slider"
+                        class="slider"
+                        [displayWith]="formatLabel" 
+                        thumbLabel 
+                        min="100" 
+                        max="50000" 
+                        step="1000"
+            ></mat-slider>
+          </div>
+        </form>
+    </div>
+  </div>
+  <div *ngIf = "formError">
+    <p class="alert alert-danger">{{formError}}</p>
+  </div>
+  <div class="displayResults">
+    <app-display-result [returnResult] = "returnResult"
+                        [oneWayResult] = "oneWayResult"
+                        [notifyMessage] = "notifyMessage"
+                        [retOneWayResult] = "retOneWayResult"
+                        [depOneWayResult] = "depOneWayResult"
+                        [travellers] = "this.formData.travellers"
+                        [ngClass]= "{'hide': !toRender}">                      
+    </app-display-result>
+  </div>
+</div>

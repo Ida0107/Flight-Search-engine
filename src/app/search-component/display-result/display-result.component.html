@@ -1,0 +1,80 @@
+<div class= "result-container">
+  <div *ngIf = "returnResult">
+    <div>
+      <h4 class="ret_desc">{{returnResult[0].fromCity}} > {{returnResult[0].toCity}} > {{returnResult[0].fromCity}}</h4>
+    </div>
+    <div *ngFor = "let each of returnResult">
+      <div class="row">
+        <div class="depFlight column">
+          <p>{{each.dep_id}}</p>
+          <h6>{{each.fromCity}} > {{each.toCity}}</h6>
+          <p>Departure Time : {{each.depTime_D}}</p>
+          <p>Arrival Time : {{each.arrTime_D}}</p>
+        </div>
+        <div class="retFlight column">
+            <p>{{each.ret_id}}</p>
+            <h6>{{each.toCity}} > {{each.fromCity}}</h6>
+            <p>Departure Time : {{each.depTime_R}}</p>
+            <p>Arrival Time : {{each.arrTime_R}}</p>          
+        </div>
+        <div class="bookBtn column">
+            <h5 *ngIf = "travellers">Rs. {{each.totalPrice * travellers}}<span class="traveller"> for {{travellers}} people</span></h5>
+            <button class="btn btn-primary"> Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "oneWayResult">
+    <div *ngFor = "let each of oneWayResult">
+      <div class="row">
+        <div class="oneWayFlightDetail column">
+          <p>{{each.flightCode}}</p>
+          <h6>{{each.fromCity}} > {{each.toCity}}</h6>
+          <p>Departure Time : {{each.departureTime}}</p>
+          <p>Arrival Time : {{each.arrivalTime}}</p>
+        </div>
+        <div class="bookBtn column">
+          <h5 *ngIf = "travellers">Rs. {{each.price * travellers}}<span class="traveller"> for {{travellers}} people</span></h5>
+          <button class="btn btn-primary"> Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "depOneWayResult">
+    <p style="margin-bottom: 10px;" class="alert alert-danger"> Return Flights for specified date not found. Check out Departure flights: </p>
+    <div *ngFor = "let each of depOneWayResult">
+        <div class="row">
+            <div class="oneWayFlightDetail column">
+              <p>{{each.flightCode}}</p>
+              <h6>{{each.fromCity}} > {{each.toCity}}</h6>
+              <p>Departure Time : {{each.departureTime}}</p>
+              <p>Arrival Time : {{each.arrivalTime}}</p>
+            </div>
+            <div class="bookBtn column">
+              <h5 *ngIf = "travellers">Rs. {{each.price * travellers}}<span class="traveller"> for {{travellers}} people</span></h5>
+              <button class="btn btn-primary"> Book Now</button>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div *ngIf = "retOneWayResult">
+    <p style="margin-bottom: 10px;" class="alert alert-danger"> Departure Flights for specified date not found. Check out Return flights: </p>
+    <div *ngFor = "let each of retOneWayResult">
+        <div class="row">
+            <div class="oneWayFlightDetail column">
+              <p>{{each.flightCode}}</p>
+              <h6>{{each.fromCity}} > {{each.toCity}}</h6>
+              <p>Departure Time : {{each.departureTime}}</p>
+              <p>Arrival Time : {{each.arrivalTime}}</p>
+            </div>
+            <div class="bookBtn column">
+              <h5 *ngIf = "travellers">Rs. {{each.price * travellers}}<span class="traveller"> for {{travellers}} people</span></h5>
+              <button class="btn btn-primary"> Book Now</button>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div *ngIf = "notifyMessage" class="alert alert-danger">
+    <p>{{notifyMessage}}</p>
+  </div>
+</div>
